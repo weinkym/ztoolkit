@@ -10,19 +10,24 @@ class A{
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+#if QT_VERSION < QT_VERSION_CHECK(5, 0, 0)
     qInstallMsgHandler(ZMsgHandler);
+#else
+    qInstallMessageHandler(ZMsgHandler);
+#endif
     ZTextCodec codec;
     codec.init("");
     MainWindow w;
     QFile file(":/stylesheet.css");
     if(file.open(QIODevice::ReadOnly))
     {
-        qDebug()<<QString("打开文件<%1>成功").arg(file.fileName());
+        qDebug()<<QString("鎵撳紑鏂囦欢<%1>鎴愬姛").arg(file.fileName());
         qApp->setStyleSheet(file.readAll());
     }
     else
     {
-        qDebug()<<QString("打开文件<%1>失败").arg(file.fileName());
+        qDebug()<<QString("鎵撳紑鏂囦欢<%1>澶辫触").arg(file.fileName());
     }
 //    int* a = 0;
 //    qDebug()<<"sizeof "<<sizeof(A);

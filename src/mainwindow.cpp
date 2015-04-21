@@ -14,17 +14,17 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->treeWidget->setColumnCount(1);
-    ui->treeWidget->setHeaderLabel("¹¦ÄÜ");
+    ui->treeWidget->setHeaderLabel("åŠŸèƒ½");
     {
         QTreeWidgetItem* item = new QTreeWidgetItem(ui->treeWidget);
-        item->setText(0,"É¾³ıÎÄ¼ş");
+        item->setText(0,"åˆ é™¤æ–‡ä»¶");
         item->setData(0,EV_INDEX,ui->stackedWidget->count());
         m_deleteFileDlg = new ZDeleteFileDlg;
         ui->stackedWidget->addWidget(m_deleteFileDlg);
     }
     {
         QTreeWidgetItem* item = new QTreeWidgetItem(ui->treeWidget);
-        item->setText(0,"ÖØÃüÃû");
+        item->setText(0,"é‡å‘½å");
         item->setData(0,EV_INDEX,ui->stackedWidget->count());
         m_renameFileDlg = new ZRenameFileDlg;
         ui->stackedWidget->addWidget(m_renameFileDlg);
@@ -32,7 +32,7 @@ MainWindow::MainWindow(QWidget *parent) :
     }
     {
         QTreeWidgetItem* item = new QTreeWidgetItem(ui->treeWidget);
-        item->setText(0,"ÎÄ¼ş¸´ÖÆ");
+        item->setText(0,"æ–‡ä»¶å¤åˆ¶");
         item->setData(0,EV_INDEX,ui->stackedWidget->count());
         m_copyFileDlg = new ZCopyFileDlg;
         ui->stackedWidget->addWidget(m_copyFileDlg);
@@ -40,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent) :
     }
     {
         QTreeWidgetItem* item = new QTreeWidgetItem(ui->treeWidget);
-        item->setText(0,"×Ô¶¯¹Ø»ú");
+        item->setText(0,"è‡ªåŠ¨å…³æœº");
         item->setData(0,EV_INDEX,ui->stackedWidget->count());
         m_shutdownDlg = new ZShutdownDlg;
         ui->stackedWidget->addWidget(m_shutdownDlg);
@@ -49,7 +49,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     {
         QTreeWidgetItem* item = new QTreeWidgetItem(ui->treeWidget);
-        item->setText(0,"ÑÕÉ«µã");
+        item->setText(0,"é¢œè‰²ç‚¹");
         item->setData(0,EV_INDEX,ui->stackedWidget->count());
         m_posColorDlg = new ZPosColorDlg;
         ui->stackedWidget->addWidget(m_posColorDlg);
@@ -103,7 +103,7 @@ ui->stackedWidget->setCurrentIndex(index);
 //    }
 //    else
 //    {
-//        onAppendMsg(QString("´ò¿ªÎÄ¼ş<%1>Ê§°Ü").arg(ui->lineEdit_file->text()));
+//        onAppendMsg(QString("æ‰“å¼€æ–‡ä»¶<%1>å¤±è´¥").arg(ui->lineEdit_file->text()));
 //    }
 //}
 
@@ -166,7 +166,7 @@ ui->stackedWidget->setCurrentIndex(index);
 //        }
 //    }
 //    QStringList labels;
-//    labels<<"ÎÄ¼ş"<<"ÀàĞÍ"<<"×´Ì¬";
+//    labels<<"æ–‡ä»¶"<<"ç±»å‹"<<"çŠ¶æ€";
 //    m_model->setHorizontalHeaderLabels(labels);
 //    m_model->setRowCount(delNames.count());
 //    m_model->setColumnCount(labels.count());
@@ -206,7 +206,7 @@ ui->stackedWidget->setCurrentIndex(index);
 //        }
 //        {
 //            QModelIndex index = m_model->index(row,2);
-//            m_model->setData(index,"Î´É¾³ı");
+//            m_model->setData(index,"æœªåˆ é™¤");
 //        }
 //       row++;
 //    }
@@ -227,10 +227,10 @@ ui->stackedWidget->setCurrentIndex(index);
 //            QModelIndex index = m_model->index(row,0);
 //            QString fileName = m_model->data(index).toString();
 //            bool isOk = QFile::remove(fileName);
-//            onAppendMsg(QString("É¾³ıÎÄ¼ş<%1>%2").arg(fileName).arg(isOk ?"³É¹¦":"Ê§°Ü"));
-//            {//ĞŞ¸Ä×´Ì¬
+//            onAppendMsg(QString("åˆ é™¤æ–‡ä»¶<%1>%2").arg(fileName).arg(isOk ?"æˆåŠŸ":"å¤±è´¥"));
+//            {//ä¿®æ”¹çŠ¶æ€
 //                QModelIndex index = m_model->index(row,2);
-//                m_model->setData(index,QString("É¾³ı<%1>").arg(isOk ?"³É¹¦":"Ê§°Ü"));
+//                m_model->setData(index,QString("åˆ é™¤<%1>").arg(isOk ?"æˆåŠŸ":"å¤±è´¥"));
 //                QColor color = isOk ? QColor(111,255,0) : QColor(255,111,0);
 //                QBrush brush(color);
 //                QStandardItem* item = m_model->item(row,2);
@@ -244,12 +244,12 @@ void MainWindow::resizeEvent(QResizeEvent *)
 {
     DEBUG_CURRENT_LINE;
     QPixmap pixmap(m_bgImage);
-    //ÅĞ¶ÏÍ¼Æ¬ÊÇ·ñÎª¿Õ
+    //åˆ¤æ–­å›¾ç‰‡æ˜¯å¦ä¸ºç©º
     if(pixmap.isNull()){
         qDebug() << tr("illege arguments") << "m_bgImage = "<<m_bgImage;
         return;
     }
-    //ÉèÖÃ´°¿ÚµÄ±³¾°
+    //è®¾ç½®çª—å£çš„èƒŒæ™¯
     QPalette    palette = this->palette();
     palette.setBrush(this->backgroundRole(),
                      QBrush(pixmap.scaled(this->size(),

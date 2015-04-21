@@ -40,11 +40,11 @@ void ZPosColorDlg::onBtnClicked()
     if(m_timer.isActive())
     {
         m_timer.stop();
-        ui->btn->setText("¿ªÊ¼");
+        ui->btn->setText("å¼€å§‹");
     }
     else
     {
         m_timer.start();
-        ui->btn->setText("ÔİÍ£");
+        ui->btn->setText("æš‚åœ");
     }
 }

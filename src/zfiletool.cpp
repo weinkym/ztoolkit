@@ -99,7 +99,7 @@ void ZFileTool::copyFile(const QList<QFileInfo> &fileInfoList, const QString &pa
         QString fileName = fileInfo.absoluteFilePath();
         if(!QFile::exists(fileName))
         {
-            qDebug()<<tr("error:‘¥Œƒº˛<%1>≤ª¥Ê‘⁄").arg(fileName);
+            qDebug()<<tr("error:Ê∫êÊñá‰ª∂<%1>‰∏çÂ≠òÂú®").arg(fileName);
             continue;
         }
         QString newFileName = QString("%1%2%3").arg(path).arg(QDir::separator()).arg(fileInfo.fileName());
@@ -109,7 +109,7 @@ void ZFileTool::copyFile(const QList<QFileInfo> &fileInfoList, const QString &pa
 //            ok = QFile::remove(newFileName);
 //            if(!ok)
 //            {
-//                qDebug()<<tr("error:«Â≥˝Œƒº˛<%1> ß∞‹").arg(newFileName);
+//                qDebug()<<tr("error:Ê∏ÖÈô§Êñá‰ª∂<%1>Â§±Ë¥•").arg(newFileName);
 //                continue;
 //            }
 //        }
@@ -117,11 +117,11 @@ void ZFileTool::copyFile(const QList<QFileInfo> &fileInfoList, const QString &pa
         ok = copyFile(fileName,newFileName);
         if(ok)
         {
-            qDebug()<<tr("∏¥÷∆<%1>   ----->  <%2>≥…π¶£°").arg(fileName).arg(newFileName);
+            qDebug()<<tr("Â§çÂà∂<%1>   ----->  <%2>ÊàêÂäüÔºÅ").arg(fileName).arg(newFileName);
         }
         else
         {
-            qDebug()<<tr("error:∏¥÷∆<%1>Œƒº˛¥ÌŒÛ newFileName = <%2>").arg(fileName).arg(newFileName);
+            qDebug()<<tr("error:Â§çÂà∂<%1>Êñá‰ª∂ÈîôËØØ newFileName = <%2>").arg(fileName).arg(newFileName);
         }
     }
 }
@@ -136,7 +136,7 @@ bool ZFileTool::copyFile(const QString &fromFile, const QString &toFile)
         bool ok = QFile::remove(toFileName);
         if(!ok)
         {
-            qDebug()<<tr("error:«Â≥˝Œƒº˛<%1> ß∞‹").arg(toFileName);
+            qDebug()<<tr("error:Ê∏ÖÈô§Êñá‰ª∂<%1>Â§±Ë¥•").arg(toFileName);
             return false;
         }
     }

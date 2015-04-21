@@ -10,7 +10,7 @@ ZRenameFileDlg::ZRenameFileDlg(QWidget *parent, Qt::WindowFlags f)
     ui.setupUi(this);
     m_model = new QStandardItemModel(this);
     initSetting();
-    m_labels<<"ÎÄ¼þ"<<"ÐÞ¸Äºó"<<"ÀàÐÍ"<<"×´Ì¬"<<"Â·¾¶";//Óëenum¶ÔÆë
+    m_labels<<"æ–‡ä»¶"<<"ä¿®æ”¹åŽ"<<"ç±»åž‹"<<"çŠ¶æ€"<<"è·¯å¾„";//ä¸Ženumå¯¹é½
 }
 
 ZRenameFileDlg::~ZRenameFileDlg()
@@ -88,7 +88,7 @@ void ZRenameFileDlg::on_btn_update_clicked()
         QString fileName = fileInfo.fileName();
         QString newName = rename(delList,fileName);
         bool isSame = (fileName.toUpper() == newName.toUpper());
-        {//ÎÄ¼þ
+        {//æ–‡ä»¶
             int col = E_NAME;
             QModelIndex index = m_model->index(row,col);
             m_model->setData(index,fileName);
@@ -97,7 +97,7 @@ void ZRenameFileDlg::on_btn_update_clicked()
             item->setCheckState(isSame ? Qt::Unchecked : Qt::Checked);
             item->setEditable(false);
         }
-        {//ÐÞ¸Äºó
+        {//ä¿®æ”¹åŽ
             int col = E_NEWNAME;
             QModelIndex index = m_model->index(row,col);
             m_model->setData(index,newName);
@@ -112,7 +112,7 @@ void ZRenameFileDlg::on_btn_update_clicked()
                 item->setBackground(QColor("#8B5A00"));
             }
         }
-        {//ÀàÐÍ
+        {//ç±»åž‹
             int col = E_TYPE;
 //            QString suffix = fileInfo.completeSuffix();
             QString suffix = fileInfo.suffix();
@@ -135,17 +135,17 @@ void ZRenameFileDlg::on_btn_update_clicked()
             QBrush brush(color);
             item->setBackground(brush);
         }
-        {//×´Ì¬
+        {//çŠ¶æ€
             int col = E_STATE;
             QModelIndex index = m_model->index(row,col);
-            m_model->setData(index,isSame ? "ÎÞÐèÐÞ¸Ä" : "´ýÐÞ¸Ä");
+            m_model->setData(index,isSame ? "æ— éœ€ä¿®æ”¹" : "å¾…ä¿®æ”¹");
             if(!isSame)
             {
                 QStandardItem* item = m_model->item(row,col);
                 item->setBackground(QColor("#8B5A00"));
             }
         }
-        {//Â·¾¶
+        {//è·¯å¾„
             int col = E_PATH;
             QModelIndex index = m_model->index(row,col);
             m_model->setData(index,fileInfo.path());
@@ -195,10 +195,10 @@ void ZRenameFileDlg::on_btn_rename_clicked()
             qDebug()<<"oldFp"<<oldFp;
             qDebug()<<"newFp"<<newFp;
             bool isOk = QFile::rename(oldFp,newFp);
-            qDebug()<<QString("ÐÞ¸ÄÎÄ¼þ<%1>%2").arg(fileName).arg(isOk ?"³É¹¦":"Ê§°Ü");
-            {//ÐÞ¸Ä×´Ì¬
+            qDebug()<<QString("ä¿®æ”¹æ–‡ä»¶<%1>%2").arg(fileName).arg(isOk ?"æˆåŠŸ":"å¤±è´¥");
+            {//ä¿®æ”¹çŠ¶æ€
                 QModelIndex index = m_model->index(row,E_STATE);
-                m_model->setData(index,QString("ÐÞ¸Ä<%1>").arg(isOk ?"³É¹¦":"Ê§°Ü"));
+                m_model->setData(index,QString("ä¿®æ”¹<%1>").arg(isOk ?"æˆåŠŸ":"å¤±è´¥"));
                 QColor color = isOk ? QColor(111,255,0) : QColor(255,111,0);
                 QBrush brush(color);
                 QStandardItem* item = m_model->item(row,E_STATE);

@@ -7,6 +7,7 @@
 TARGET_NAME = ztoolkit
 DEFINES_NAME = MPLIB_LIBRARY
 ###############################################################################
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets network webkitwidgets multimedia
 
 #DEFINES += $${DEFINES_NAME}
 
@@ -23,8 +24,6 @@ message(TTTTTTTTTTTTTTTTTT)
 message(appappappappappapp)
 TEMPLATE = app
 SOURCES += src/main.cpp
-DESTDIR  = ../../../bin
-win32: RC_FILE = ztoolkit.rc
 }
 ###############################################################################
 TARGET = $${TARGET_NAME}
@@ -35,8 +34,11 @@ win32 {
 CONFIG(debug, debug|release): OBJECTS_DIR = ../../../TEMP/$${TARGET}/debug
 CONFIG(release, debug|release): OBJECTS_DIR = ../../../TEMP/$${TARGET}/release
 CONFIG(debug, debug|release) : TARGET = $${TARGET_NAME}d
+DESTDIR  = ../../../bin
+RC_FILE = ztoolkit.rc
 } else {
-OBJECTS_DIR = ../../../TEMP/$${TARGET}
+DESTDIR  = ./bin
+OBJECTS_DIR = ./TEMP/$${TARGET}
 }
 ###############################################################################
 UI_DIR      = $${OBJECTS_DIR}/uic
@@ -48,7 +50,12 @@ INCLUDEPATH += $${OBJECTS_DIR}/uic
 INCLUDEPATH += ./include
 INCLUDEPATH += ../../src_lib/mplib/include
 ###############################################################################
+win32{
 LIBS += -L../../../lib -lmplib
+}else{
+LIBS += -L../../src_lib/mplib/lib -lmplib
+}
+
 ###############################################################################
 ###############################################################################
 ###############################################################################

@@ -23,14 +23,14 @@ void ZShutdownDlg::on_btn_start_clicked()
 {
     if(m_timer.isActive())
     {
-        ui.btn_start->setText("¿ªÊ¼");
+        ui.btn_start->setText("å¼€å§‹");
         ui.label_time->setVisible(false);
         ui.dSpinBox->setReadOnly(false);
         m_timer.stop();
     }
     else
     {
-        ui.btn_start->setText("È¡Ïû");
+        ui.btn_start->setText("å–æ¶ˆ");
         m_timer.start();
         ui.label_time->setVisible(true);
         ui.dSpinBox->setReadOnly(true);
@@ -54,7 +54,7 @@ void ZShutdownDlg::onTimerout()
     secs %= 3600;
     int m = secs / 60;
     secs %= 60;
-    ui.label_time->setText(QString("%1Ğ¡Ê±%2·Ö%3Ãë").arg(h).arg(m).arg(secs));
+    ui.label_time->setText(QString("%1å°æ—¶%2åˆ†%3ç§’").arg(h).arg(m).arg(secs));
 }
 
 void ZShutdownDlg::onValueChanged(double value)

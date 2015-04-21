@@ -12,7 +12,7 @@ ZCopyFileDlg::ZCopyFileDlg(QWidget *parent, Qt::WindowFlags f)
     m_model = new QStandardItemModel(this);
     initSetting();
 //    enum{E_NAME = 0,E_FROM_PATH,E_TO_PATH,E_TYPE,E_STATE,E_SIZE};
-    m_labels<<"Œƒº˛"<<"¬∑æ∂"<<"∏¥÷∆¬∑æ∂"<<"¿‡–Õ"<<"◊¥Ã¨"<<"¥Û–°";//”Îenum∂‘∆Î
+    m_labels<<"Êñá‰ª∂"<<"Ë∑ØÂæÑ"<<"Â§çÂà∂Ë∑ØÂæÑ"<<"Á±ªÂûã"<<"Áä∂ÊÄÅ"<<"Â§ßÂ∞è";//‰∏éenumÂØπÈΩê
 }
 
 ZCopyFileDlg::~ZCopyFileDlg()
@@ -68,7 +68,7 @@ QMap<QString, QStringList> ZCopyFileDlg::getCopyFileInfo(int &count)
         }
         else
         {
-            qDebug()<<(QString("¥Úø™Œƒº˛<%1> ß∞‹").arg(ui.lineEdit_file->text()));
+            qDebug()<<(QString("ÊâìÂºÄÊñá‰ª∂<%1>Â§±Ë¥•").arg(ui.lineEdit_file->text()));
         }
         if(fileList.count() > 0)
         {
@@ -160,7 +160,7 @@ void ZCopyFileDlg::on_btn_update_clicked()
             {
                 int col = E_STATE;
                 QModelIndex index = m_model->index(row,col);
-                m_model->setData(index,"¥˝∏¥÷∆");
+                m_model->setData(index,"ÂæÖÂ§çÂà∂");
             }
             {
                 int col = E_SIZE;
@@ -212,10 +212,10 @@ void ZCopyFileDlg::on_btn_copy_clicked()
             QString toName = tInfo.absoluteFilePath();
 
             bool isOk = ZFileTool::copyFile(fromName,toName);
-            qDebug()<<QString("∏¥÷∆Œƒº˛<%1>µΩ<%2>%3").arg(fromName).arg(toName).arg(isOk ?"≥…π¶":" ß∞‹");
-            {//–ﬁ∏ƒ◊¥Ã¨
+            qDebug()<<QString("Â§çÂà∂Êñá‰ª∂<%1>Âà∞<%2>%3").arg(fromName).arg(toName).arg(isOk ?"ÊàêÂäü":"Â§±Ë¥•");
+            {//‰øÆÊîπÁä∂ÊÄÅ
                 QModelIndex index = m_model->index(row,E_STATE);
-                m_model->setData(index,QString("∏¥÷∆<%1>").arg(isOk ?"≥…π¶":" ß∞‹"));
+                m_model->setData(index,QString("Â§çÂà∂<%1>").arg(isOk ?"ÊàêÂäü":"Â§±Ë¥•"));
                 QColor color = isOk ? QColor(111,255,0).dark() : QColor(255,111,0);
                 QBrush brush(color);
                 QStandardItem* item = m_model->item(row,E_STATE);
@@ -231,9 +231,9 @@ void ZCopyFileDlg::on_btn_file_clicked()
     DEBUG_CURRENT_LINE;
     QStringList files = QFileDialog::getOpenFileNames(
                              this,
-                             "—°‘ÒŒƒº˛",
+                             "ÈÄâÊã©Êñá‰ª∂",
                              ui.lineEdit_path->text(),
-                             "À˘”– (*.*)");
+                             "ÊâÄÊúâ (*.*)");
     if(!files.isEmpty())
     {
         ui.lineEdit_file->setText(files.join(";"));

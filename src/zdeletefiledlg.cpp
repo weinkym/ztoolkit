@@ -63,7 +63,7 @@ void ZDeleteFileDlg::on_btn_update_clicked()
         }
     }
     QStringList labels;
-    labels<<"ÎÄ¼þ"<<"ÀàÐÍ"<<"×´Ì¬";
+    labels<<"æ–‡ä»¶"<<"ç±»åž‹"<<"çŠ¶æ€";
     m_model->setHorizontalHeaderLabels(labels);
     m_model->setRowCount(delNames.count());
     m_model->setColumnCount(labels.count());
@@ -103,7 +103,7 @@ void ZDeleteFileDlg::on_btn_update_clicked()
         }
         {
             QModelIndex index = m_model->index(row,2);
-            m_model->setData(index,"Î´É¾³ý");
+            m_model->setData(index,"æœªåˆ é™¤");
         }
        row++;
     }
@@ -137,10 +137,10 @@ void ZDeleteFileDlg::on_btn_delete_clicked()
             QModelIndex index = m_model->index(row,0);
             QString fileName = m_model->data(index).toString();
             bool isOk = QFile::remove(fileName);
-            qDebug()<<QString("É¾³ýÎÄ¼þ<%1>%2").arg(fileName).arg(isOk ?"³É¹¦":"Ê§°Ü");
-            {//ÐÞ¸Ä×´Ì¬
+            qDebug()<<QString("åˆ é™¤æ–‡ä»¶<%1>%2").arg(fileName).arg(isOk ?"æˆåŠŸ":"å¤±è´¥");
+            {//ä¿®æ”¹çŠ¶æ€
                 QModelIndex index = m_model->index(row,2);
-                m_model->setData(index,QString("É¾³ý<%1>").arg(isOk ?"³É¹¦":"Ê§°Ü"));
+                m_model->setData(index,QString("åˆ é™¤<%1>").arg(isOk ?"æˆåŠŸ":"å¤±è´¥"));
                 QColor color = isOk ? QColor(56,120,0) : QColor(255,111,0);
                 QBrush brush(color);
                 QStandardItem* item = m_model->item(row,2);
